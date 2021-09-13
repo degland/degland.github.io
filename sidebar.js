@@ -23,7 +23,7 @@ async function generateList() {
         // let label = element.text
         // label = label.replace(html_trim_regex, "")
         // text += label + "\n"
-        let label = "wizard"
+        let label = "wizard2"
         label = text.replace(test_regex, "")
         text += label + "\n"
     });
