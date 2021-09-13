@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 15
+const version = 16
 
 async function generateList() {
     let widgets = await miro.board.widgets.get()
@@ -28,7 +28,8 @@ async function generateList() {
 
         widget.tags.forEach(tag => {
             // text += "-----\n"
-            tags.push(tag.title)
+            tags.push(String(tag.title))
+            console.log(String(tag.title))
             // text += tag.title + "\n"
         })
 
@@ -71,7 +72,7 @@ async function generateList() {
                 }
             })
 
-            if(identified === true){ text += title + ", " + biome + ", " + type + ", " + subtype +",\n" }
+            // if(identified === true){ text += title + ", " + biome + ", " + type + ", " + subtype +",\n" }
 
 
             let label = widget.text
