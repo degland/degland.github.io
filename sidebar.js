@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 11
+const version = 12
 
 async function generateList() {
     // Get selected widgets
@@ -30,7 +30,7 @@ async function generateList() {
         let tags = []
         widget.tags.forEach(tag => {
             text += "-----\n"
-            tags.push(tag.title)
+            // tags.push(tag.title)
             text += tag.title + "\n"
         })
 
