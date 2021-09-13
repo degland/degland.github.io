@@ -28,9 +28,9 @@ async function generateList() {
 
     widgets.forEach(widget => {
         let tags = []
-        widget.tags.array.forEach(tag => {
+        widget.tags.forEach(tag => {
             text += "-----\n"
-            tags.append(tag.title)
+            tags.push(tag.title)
             text += tag.title + "\n"
         })
 
@@ -61,14 +61,19 @@ async function generateList() {
             tags.array.forEach(tag => {
                 if(tag.match(biome_regex)){
                     biome = tag.replace(biome_regex, "")
+                    identified = true
                 }
                 else if(tag.match(type_regex)){
                     type = tag.replace(type_regex, "")
+                    identified = true
                 }
                 else if(tag.match(subtype_regex)){
                     subtype = tag.replace(subtype_regex, "")
+                    identified = true
                 }
             })
+
+            if(identified === true){ text += title + ", " + biome + ", " + type + ", " + subtype +",\n" }
 
 
             let label = widget.text
