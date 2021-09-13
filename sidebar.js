@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 24
+const version = 25
 
 async function generateList() {
     let widgets = await miro.board.widgets.get()
@@ -43,7 +43,7 @@ async function generateList() {
 
                 let biome = "uncategorised"
                 let type = "uncategorised"
-                let subtype = "uncategorised"
+                let subtype = "none"
 
                 //biome:1
                 //type:item
@@ -70,8 +70,8 @@ async function generateList() {
                 if(identified === true){ text += title + ", " + biome + ", " + type + ", " + subtype +",\n" }
                 else{ console.log("unidentified: " + title) }
             }       
-        })
-    }
+        }
+    })
 
 
     // Check that widget has text field
