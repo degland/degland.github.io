@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 22
+const version = 23
 
 async function generateList() {
     let widgets = await miro.board.widgets.get()
@@ -17,7 +17,7 @@ async function generateList() {
 
     let text = "" + version + "\n"
     
-    const html_trim_regex = new RegExp("<\/?\w+>")
+    const html_trim_regex = new RegExp("<\/?\w+>", "g")
     const biome_regex = new RegExp("biome:")
     const type_regex = new RegExp("type:")
     const subtype_regex = new RegExp("subtype:")
@@ -34,9 +34,6 @@ async function generateList() {
 
         if(!tags.includes("export-ignore"))
         {
-
-            let line = ""
-
             let title = String(widget.text).replace(html_trim_regex,"")
             console.log(widget.text)
             console.log("replaced + " + title)
@@ -74,8 +71,6 @@ async function generateList() {
         }       
     })
 
-    
-    
 
     // Check that widget has text field
     if (typeof text === 'string') {
