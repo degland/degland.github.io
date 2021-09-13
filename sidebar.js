@@ -17,11 +17,15 @@ async function generateList() {
     let text = ""
     
     const html_trim_regex = new RegExp("</?\w+>")
+    const test_regex =  new RegExp("wiz")
 
     widgets.forEach(element => {
-        let label = element.text
-        label = label.replace(html_trim_regex, "")
-        text += "wizard" + "\n"
+        // let label = element.text
+        // label = label.replace(html_trim_regex, "")
+        // text += label + "\n"
+        let label = "wizard"
+        label = text.replace(test_regex, "")
+        text += label + "\n"
     });
 
     
