@@ -14,18 +14,18 @@ async function generateList() {
 
     widgets = widgets.filter((widget) => widget.type === "STICKER")
 
-    let text = "2 \n"
+    let text = "3 \n"
     
-    const html_trim_regex = new RegExp("</?\w+>")
+    const html_trim_regex = new RegExp("<\/?\w+>")
     const test_regex =  new RegExp("wiz")
 
     widgets.forEach(element => {
-        // let label = element.text
-        // label = label.replace(html_trim_regex, "")
-        // text += label + "\n"
-        let label = "wizard2"
-        label = label.replace(test_regex, "")
+        let label = element.text
+        label = label.replace(html_trim_regex, "")
         text += label + "\n"
+        let label2 = "wizard2"
+        label = label2.replace(test_regex, "")
+        text += label2 + "\n"
     });
 
     
