@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 12
+const version = 13
 
 async function generateList() {
     // Get selected widgets
@@ -16,7 +16,6 @@ async function generateList() {
     let widgets = await miro.board.widgets.get()
 
     widgets = widgets.filter((widget) => widget.type === "STICKER")
-
 
     let text = "" + version + "\n"
     
@@ -28,10 +27,11 @@ async function generateList() {
 
     widgets.forEach(widget => {
         let tags = []
+
         widget.tags.forEach(tag => {
-            text += "-----\n"
-            // tags.push(tag.title)
-            text += tag.title + "\n"
+            // text += "-----\n"
+            tags.push(tag.title)
+            // text += tag.title + "\n"
         })
 
         // text += widget.tags[0].title + "\n"
@@ -58,22 +58,22 @@ async function generateList() {
             //type:item
             //subtype:crafted-tool
 
-            tags.array.forEach(tag => {
-                if(tag.match(biome_regex)){
-                    biome = tag.replace(biome_regex, "")
-                    identified = true
-                }
-                else if(tag.match(type_regex)){
-                    type = tag.replace(type_regex, "")
-                    identified = true
-                }
-                else if(tag.match(subtype_regex)){
-                    subtype = tag.replace(subtype_regex, "")
-                    identified = true
-                }
-            })
+            // tags.array.forEach(tag => {
+            //     if(tag.match(biome_regex)){
+            //         biome = tag.replace(biome_regex, "")
+            //         identified = true
+            //     }
+            //     else if(tag.match(type_regex)){
+            //         type = tag.replace(type_regex, "")
+            //         identified = true
+            //     }
+            //     else if(tag.match(subtype_regex)){
+            //         subtype = tag.replace(subtype_regex, "")
+            //         identified = true
+            //     }
+            // })
 
-            if(identified === true){ text += title + ", " + biome + ", " + type + ", " + subtype +",\n" }
+            // if(identified === true){ text += title + ", " + biome + ", " + type + ", " + subtype +",\n" }
 
 
             let label = widget.text
