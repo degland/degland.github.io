@@ -14,7 +14,7 @@ async function generateList() {
 
     widgets = widgets.filter((widget) => widget.type === "STICKER")
 
-    let text = ""
+    let text = "1 \n"
     
     const html_trim_regex = new RegExp("</?\w+>")
     const test_regex =  new RegExp("wiz")
