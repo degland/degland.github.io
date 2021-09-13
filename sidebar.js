@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 21
+const version = 22
 
 async function generateList() {
     let widgets = await miro.board.widgets.get()
@@ -26,15 +26,9 @@ async function generateList() {
         const tags = []
 
         widget.tags.forEach(tag => {
-            // text += "-----\n"
             console.log(String(tag.title))
             tags.push(String(tag.title))
-            console.log(String(tag.title))
-            // text += tag.title + "\n"
         })
-
-        // text += widget.tags[0].title + "\n"
-        // text += widget.tags[1].title + "\n"
 
         text += "-----\n"
 
@@ -63,12 +57,13 @@ async function generateList() {
                     biome = tag.replace(biome_regex, "")
                     identified = true
                 }
-                else if(String(tag).match(type_regex)){
-                    type = tag.replace(type_regex, "")
-                    identified = true
-                }
+                
                 else if(String(tag).match(subtype_regex)){
                     subtype = tag.replace(subtype_regex, "")
+                    identified = true
+                }
+                else if(String(tag).match(type_regex)){
+                    type = tag.replace(type_regex, "")
                     identified = true
                 }
                 else{ console.log("no match")}
