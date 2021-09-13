@@ -15,7 +15,7 @@ async function generateList() {
     widgets = widgets.filter((widget) => widget.type === "STICKER")
 
 
-    let text = "5 \n"
+    let text = "6 \n"
     
     const html_trim_regex = new RegExp("<\/?\w+>")
     const test_regex =  new RegExp("wiz")
@@ -23,8 +23,9 @@ async function generateList() {
     widgets.forEach(widget => {
         let tags = []
         widget.tags.foreach(tag => {
-            tags.append(tag.title)
-            text += tag.title + "\n"
+            text += "-----\n"
+            // tags.append(tag.title)
+            // text += tag.title + "\n"
         })
 
         text += "-----\n"
