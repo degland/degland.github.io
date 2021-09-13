@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 10
+const version = 11
 
 async function generateList() {
     // Get selected widgets
