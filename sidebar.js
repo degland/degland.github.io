@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 7
+const version = 8
 
 async function generateList() {
     // Get selected widgets
@@ -25,15 +25,15 @@ async function generateList() {
 
     widgets.forEach(widget => {
         let tags = []
-        // widget.tags.foreach(tag => {
-        //     text += "-----\n"
-        //     // tags.append(tag.title)
-        //     // text += tag.title + "\n"
-        // })
+        widget.tags.forEach(tag => {
+            text += "-----\n"
+            tags.append(tag.title)
+            text += tag.title + "\n"
+        })
 
-        text += widget.tags[0].title
+        // text += widget.tags[0].title
 
-        text += "-----\n"
+        // text += "-----\n"
 
         if(!tags.includes("export-ignore"))
         {
@@ -59,11 +59,12 @@ async function generateList() {
             let label = widget.text
             label = label.replace(html_trim_regex, "")
             text += label + "\n"
+
             let label2 = "wizard2"
             label2 = label2.replace(test_regex, "")
             text += label2 + "\n"
         }       
-    });
+    })
 
     
     
