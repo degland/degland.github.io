@@ -15,7 +15,7 @@ async function generateList() {
 
     widgets = widgets.filter((widget) => widget.type === "STICKER")
 
-    let text = "" + version + "\n"
+    let text = "version: " + version + "\n"
     
     const html_trim_regex = new RegExp("<\\/?\\w+>", "g")
     const biome_regex = new RegExp("biome:", "i")
@@ -30,8 +30,6 @@ async function generateList() {
                 console.log(String(tag.title))
                 tags.push(String(tag.title))
             })
-
-            text += "-----\n"
 
             if(!tags.includes("export-ignore"))
             {
