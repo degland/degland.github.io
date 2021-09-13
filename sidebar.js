@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 9
+const version = 10
 
 async function generateList() {
     // Get selected widgets
@@ -28,14 +28,14 @@ async function generateList() {
 
     widgets.forEach(widget => {
         let tags = []
-        // widget.tags.forEach(tag => {
-        //     text += "-----\n"
-        //     tags.append(tag.title)
-        //     text += tag.title + "\n"
-        // })
+        widget.tags.array.forEach(tag => {
+            text += "-----\n"
+            tags.append(tag.title)
+            text += tag.title + "\n"
+        })
 
-        text += widget.tags[0].title + "\n"
-        text += widget.tags[1].title + "\n"
+        // text += widget.tags[0].title + "\n"
+        // text += widget.tags[1].title + "\n"
 
         text += "-----\n"
 
@@ -58,16 +58,26 @@ async function generateList() {
             //type:item
             //subtype:crafted-tool
 
-            
+            tags.array.forEach(tag => {
+                if(tag.match(biome_regex)){
+                    biome = tag.replace(biome_regex, "")
+                }
+                else if(tag.match(type_regex)){
+                    type = tag.replace(type_regex, "")
+                }
+                else if(tag.match(subtype_regex)){
+                    subtype = tag.replace(subtype_regex, "")
+                }
+            })
 
 
             let label = widget.text
             label = label.replace(html_trim_regex, "")
             text += label + "\n"
 
-            let label2 = "wizard2"
-            label2 = label2.replace(test_regex, "")
-            text += label2 + "\n"
+            // let label2 = "wizard2"
+            // label2 = label2.replace(test_regex, "")
+            // text += label2 + "\n"
         }       
     })
 
