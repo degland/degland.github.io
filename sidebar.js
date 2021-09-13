@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 18
+const version = 19
 
 async function generateList() {
     let widgets = await miro.board.widgets.get()
@@ -18,7 +18,6 @@ async function generateList() {
     let text = "" + version + "\n"
     
     const html_trim_regex = new RegExp("<\/?\w+>")
-    const test_regex =  new RegExp("wiz")
     const biome_regex = new RegExp("Biome:")
     const type_regex = new RegExp("Type:")
     const subtype_regex = new RegExp("Subtype:")
@@ -44,7 +43,7 @@ async function generateList() {
 
             let line = ""
 
-            let title = widget.text.replace(html_trim_regex,"")
+            let title = String(widget.text).replace(html_trim_regex,"")
             console.log(widget.text)
             console.log("replaced + " + title)
 
@@ -61,30 +60,22 @@ async function generateList() {
             //subtype:crafted-tool
 
             tags.forEach(tag => {
-                if(tag.match(biome_regex)){
+                if(String(tag).match(biome_regex)){
                     biome = tag.replace(biome_regex, "")
                     identified = true
                 }
-                else if(tag.match(type_regex)){
+                else if(String(tag).match(type_regex)){
                     type = tag.replace(type_regex, "")
                     identified = true
                 }
-                else if(tag.match(subtype_regex)){
+                else if(String(tag).match(subtype_regex)){
                     subtype = tag.replace(subtype_regex, "")
                     identified = true
                 }
             })
 
             if(identified === true){ text += title + ", " + biome + ", " + type + ", " + subtype +",\n" }
-
-
-            let label = widget.text
-            label = label.replace(html_trim_regex, "")
-            text += label + "\n"
-
-            // let label2 = "wizard2"
-            // label2 = label2.replace(test_regex, "")
-            // text += label2 + "\n"
+            else{ console.log("unidentified") }
         }       
     })
 
