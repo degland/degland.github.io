@@ -18,9 +18,9 @@ async function generateList() {
     let text = "" + version + "\n"
     
     const html_trim_regex = new RegExp("<\/?\w+>")
-    const biome_regex = new RegExp("Biome:")
-    const type_regex = new RegExp("Type:")
-    const subtype_regex = new RegExp("Subtype:")
+    const biome_regex = new RegExp("biome:")
+    const type_regex = new RegExp("type:")
+    const subtype_regex = new RegExp("subtype:")
 
     widgets.forEach(widget => {
         const tags = []
@@ -52,8 +52,6 @@ async function generateList() {
             let biome = "uncategorised"
             let type = "uncategorised"
             let subtype = "uncategorised"
-
-            //format the tag sort of like json?
 
             //biome:1
             //type:item
