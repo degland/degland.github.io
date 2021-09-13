@@ -14,7 +14,7 @@ async function generateList() {
 
     widgets = widgets.filter((widget) => widget.type === "STICKER")
 
-    let text = "1 \n"
+    let text = "2 \n"
     
     const html_trim_regex = new RegExp("</?\w+>")
     const test_regex =  new RegExp("wiz")
@@ -24,7 +24,7 @@ async function generateList() {
         // label = label.replace(html_trim_regex, "")
         // text += label + "\n"
         let label = "wizard2"
-        label = text.replace(test_regex, "")
+        label = label.replace(test_regex, "")
         text += label + "\n"
     });
 
