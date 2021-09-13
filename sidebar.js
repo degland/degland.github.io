@@ -17,7 +17,9 @@ async function generateList() {
     let text = ""
     
     widgets.forEach(element => {
-        text += element.text + "\n"
+        let label = element.text
+        label = label.replace(new RegExp("</?\w+>"), "")
+        text += label + "\n"
     });
 
     
