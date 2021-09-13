@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 19
+const version = 20
 
 async function generateList() {
     let widgets = await miro.board.widgets.get()
@@ -60,6 +60,7 @@ async function generateList() {
             //subtype:crafted-tool
 
             tags.forEach(tag => {
+                console.log(String(tag))
                 if(String(tag).match(biome_regex)){
                     biome = tag.replace(biome_regex, "")
                     identified = true
@@ -72,6 +73,7 @@ async function generateList() {
                     subtype = tag.replace(subtype_regex, "")
                     identified = true
                 }
+                else{ console.log("no match")}
             })
 
             if(identified === true){ text += title + ", " + biome + ", " + type + ", " + subtype +",\n" }
