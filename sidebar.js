@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 14
+const version = 15
 
 async function generateList() {
     let widgets = await miro.board.widgets.get()
@@ -29,7 +29,6 @@ async function generateList() {
         widget.tags.forEach(tag => {
             // text += "-----\n"
             tags.push(tag.title)
-            console.log(tag.title)
             // text += tag.title + "\n"
         })
 
@@ -57,22 +56,22 @@ async function generateList() {
             //type:item
             //subtype:crafted-tool
 
-            // tags.array.forEach(tag => {
-            //     if(tag.match(biome_regex)){
-            //         biome = tag.replace(biome_regex, "")
-            //         identified = true
-            //     }
-            //     else if(tag.match(type_regex)){
-            //         type = tag.replace(type_regex, "")
-            //         identified = true
-            //     }
-            //     else if(tag.match(subtype_regex)){
-            //         subtype = tag.replace(subtype_regex, "")
-            //         identified = true
-            //     }
-            // })
+            tags.array.forEach(tag => {
+                if(tag.match(biome_regex)){
+                    biome = tag.replace(biome_regex, "")
+                    identified = true
+                }
+                else if(tag.match(type_regex)){
+                    type = tag.replace(type_regex, "")
+                    identified = true
+                }
+                else if(tag.match(subtype_regex)){
+                    subtype = tag.replace(subtype_regex, "")
+                    identified = true
+                }
+            })
 
-            // if(identified === true){ text += title + ", " + biome + ", " + type + ", " + subtype +",\n" }
+            if(identified === true){ text += title + ", " + biome + ", " + type + ", " + subtype +",\n" }
 
 
             let label = widget.text
