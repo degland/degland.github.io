@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 8
+const version = 9
 
 async function generateList() {
     // Get selected widgets
@@ -22,24 +22,29 @@ async function generateList() {
     
     const html_trim_regex = new RegExp("<\/?\w+>")
     const test_regex =  new RegExp("wiz")
+    const biome_regex = new RegExp("Biome:")
+    const type_regex = new RegExp("Type:")
+    const subtype_regex = new RegExp("Subtype:")
 
     widgets.forEach(widget => {
         let tags = []
-        widget.tags.forEach(tag => {
-            text += "-----\n"
-            tags.append(tag.title)
-            text += tag.title + "\n"
-        })
+        // widget.tags.forEach(tag => {
+        //     text += "-----\n"
+        //     tags.append(tag.title)
+        //     text += tag.title + "\n"
+        // })
 
-        // text += widget.tags[0].title
+        text += widget.tags[0].title + "\n"
+        text += widget.tags[1].title + "\n"
 
-        // text += "-----\n"
+        text += "-----\n"
 
         if(!tags.includes("export-ignore"))
         {
 
             let line = ""
-            let title = widget.text
+
+            let title = widget.text.replace(html_trim_regex,"")
 
             let identified = false
 
@@ -53,7 +58,7 @@ async function generateList() {
             //type:item
             //subtype:crafted-tool
 
-
+            
 
 
             let label = widget.text
