@@ -21,7 +21,7 @@ async function generateList() {
     widgets.forEach(element => {
         let label = element.text
         label = label.replace(html_trim_regex, "")
-        text += label + "\n"
+        text += "wizard" + "\n"
     });
 
     
