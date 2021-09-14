@@ -20,7 +20,7 @@ async function generateList() {
     //output version number so it's easier to tell if miro has updated
     let text = "Version: " + version + "\n"
 
-    text += "Title,Biome,Type,Subtype"
+    text += "Title,Biome,Type,Subtype\n"
     
     //Prepare some regex
     const html_trim_regex = new RegExp("<\\/?\\w+>", "g")
