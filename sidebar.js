@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 27
+const version = 28
 
 async function generateList() {
     //Get all the widgets
@@ -20,7 +20,7 @@ async function generateList() {
     //output version number so it's easier to tell if miro has updated
     let text = "Version: " + version + "\n"
 
-    text += "Title,Biome,Type,Subtype\n"
+    text += "Title;Biome;Type;Subtype\n"
     
     //Prepare some regex
     const html_trim_regex = new RegExp("<\\/?\\w+>", "g")
@@ -76,7 +76,7 @@ async function generateList() {
                 })
 
                 //If we understood any of the tags, add this sticker to the output list
-                if(identified === true){ text += title + "," + biome + "," + type + "," + subtype +"\n" }
+                if(identified === true){ text += title + ";" + biome + ";" + type + ";" + subtype +"\n" }
                 else{ console.log("unidentified: " + title) }
             }       
         }
