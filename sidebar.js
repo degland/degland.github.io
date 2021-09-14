@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 28
+const version = 29
 
 async function generateList() {
     //Get all the widgets
@@ -23,7 +23,6 @@ async function generateList() {
     text += "Title;Biome;Type;Subtype\n"
     
     //Prepare some regex
-    const html_trim_regex = new RegExp("<\\/?\\w+>", "g")
     const biome_regex = new RegExp("biome:", "i")
     const type_regex = new RegExp("type:", "i")
     const subtype_regex = new RegExp("subtype:", "i")
@@ -43,7 +42,7 @@ async function generateList() {
             if(!tags.includes("export-ignore"))
             {
                 //The text on the sticker has a bunch of html markup in it, strip that out
-                let title = String(widget.text).replace(html_trim_regex,"")
+                let title = htmlDecode(String(widget.text))
 
                 //This tracks whether we managed to interpret any of the tags on the sticker. If not, we don't print it.
                 let identified = false
@@ -94,3 +93,8 @@ async function generateList() {
         widgetTextElement.value = ''
     }
 }
+
+function htmlDecode(input) {
+    var doc = new DOMParser().parseFromString(input, "text/html");
+    return doc.documentElement.textContent;
+  }
