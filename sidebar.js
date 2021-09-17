@@ -8,7 +8,7 @@ miro.onReady(() => {
 const tipElement = document.getElementById('tip')
 const widgetTextElement = document.getElementById('widget-text')
 
-const version = 29
+const version = 30
 
 async function generateList() {
     //Get all the widgets
@@ -18,9 +18,10 @@ async function generateList() {
     widgets = widgets.filter((widget) => widget.type === "STICKER")
 
     //output version number so it's easier to tell if miro has updated
-    let text = "Version: " + version + "\n"
+    Console.log("Version: " + version + "\n")
 
-    text += "Title;Biome;Type;Subtype\n"
+    //Table headers
+    let text = "Title;Biome;Type;Subtype\n"
     
     //Prepare some regex
     const biome_regex = new RegExp("biome:", "i")
