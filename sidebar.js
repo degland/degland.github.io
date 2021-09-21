@@ -35,7 +35,7 @@ async function generateList() {
             const tags = []
             //save the name of every tag on each sticker
             widget.tags.forEach(tag => {
-                console.log(String(tag.title))
+                //console.log(String(tag.title))
                 tags.push(String(tag.title))
             })
 
