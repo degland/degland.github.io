@@ -18,7 +18,7 @@ async function generateList() {
     widgets = widgets.filter((widget) => widget.type === "STICKER")
 
     //output version number so it's easier to tell if miro has updated
-    Console.log("Version: " + version + "\n")
+    console.log("Version: " + version + "\n")
 
     //Table headers
     let text = "Title;Biome;Type;Subtype\n"
